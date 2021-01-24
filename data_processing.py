@@ -13,10 +13,6 @@ for loc in df['location'].unique():
   for dt in dates:
     if dt not in df[df['location'] == loc].date.unique():
       y = pd.Series([loc, '', dt, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan],index=df.columns)
-      x = pd.Series(0, index=df.columns)
-      x['date'] = x['date'].astype(datetime.datetime)
-      x['date'] = dt
-      x['location'] = loc
       df = df.append(y,ignore_index=True)
 df = df.sort_values(['location','date'])
 df = df.reset_index()
